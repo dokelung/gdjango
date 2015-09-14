@@ -1,0 +1,16 @@
+{% extends 'base.html' %}
+
+{% block title %} Manage {% endblock %}
+
+{% block sub-region %}
+	<h1>Project Settings</h1>
+	<br>
+	<table class="table table-hover">
+	{% for item, value in settings.items %}
+		<tr>
+			<td>{{ item }}</td>
+			<td>{{ value|safe }}</td>
+		</tr>
+	{% endfor %}
+	</table>
+{% endblock%}

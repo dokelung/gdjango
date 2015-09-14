@@ -1,0 +1,15 @@
+{% extends 'base.html' %}
+
+{% block title %} Manage {% endblock %}
+
+{% block sub-region %}
+    <h1 class="page-header">Settings</h1>
+	<table class="table">
+	{% for item, value in settings.items %}
+		<tr>
+			<td>{{ item }}</td>
+			<td>{{ value }}</td>
+		</tr>
+	{% endfor %}
+	</table>
+{% endblock%}
