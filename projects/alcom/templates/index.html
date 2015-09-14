@@ -1,0 +1,62 @@
+{% extends 'base.html' %}
+
+{% block title %} Home {% endblock %}
+
+{% block sub-region %}
+    <img src="/static/img/logo/aboutalcom.png">
+    <br><br>
+    <div class="row">
+        <div class="col-lg-6">
+            <p>
+                The ALCom Lab concerns with Applied Logic and Computation in System Design.
+            </p>
+            <p>
+                It is founded in August 2005. We are cooking an enjoyable research environment and a culture of creativity.
+            </p>
+            <img src="/static/img/logo/alcomsign.png">
+        </div><!-- /.col-lg-4 -->
+        <div class="col-lg-5">
+            <img src="/static/img/logo/mainposter.png">
+        </div>
+    </div><!-- /.row -->
+    <br>
+    <img src="/static/img/logo/latestnews.png">
+    <br><br>
+        {% for news in newss %}
+            <div class= "media" > 
+                <div class= "media-left" > 
+                    <a href= "{{ news.link }}" > 
+                        <img class= "media-object" src= "/static/img/news/{{ news.picture }}" alt= "{{ news.title }}"  height="48" width="48"> 
+                    </a> 
+                </div> 
+                <div class= "media-body" > 
+                    <h5 class= "media-heading" > {{ news.title }} </h5>
+                    {{ news.date }} &nbsp;&nbsp;
+                    <button type="button" class="btn btn-info btn-xs" data-toggle="modal" data-target="#news{{ news.id }}">
+                        深入閱讀
+                    </button>
+                </div> 
+            </div>
+
+            <!-- Modal -->
+            <div class="modal fade" id=news{{ news.id }} tabindex="-1" role="dialog" aria-labelledby="myModalLabel"             aria-hidden="true">
+              <div class="modal-dialog">
+                <div class="modal-content">
+                  <div class="modal-header">
+                    <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-         hidden="true">&times;</span></button>
+                    <h4 class="modal-title" id="myModalLabel">{{ news.title }}</h4>
+                  </div>
+                  <div class="modal-body">
+                    {{ news.content|safe }}
+                  </div>
+                  <div class="modal-footer">
+                    <button type="button" class="btn btn-default" data-dismiss="modal">閱讀完畢</button>
+                    <!--<button type="button" class="btn btn-primary">Save changes</button>-->
+                  </div>
+                </div>
+              </div>
+            </div>
+        {% endfor %}
+    <br><br>
+    <img src="/static/img/logo/contactus.png">
+{% endblock%}

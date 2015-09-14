@@ -1,0 +1,35 @@
+{% extends 'people.html' %}
+	
+	{% block sub-title%}
+		<img src="/static/img/logo/graduatestudents.png">
+	{% endblock %}
+
+	{% block content %}
+      	{% for ur in user_rows %}
+      	<div class="row">
+      		{% for user in ur %}
+      		<div class="col-lg-4">
+				<img class="img-square" src='/static/img/people/{{ user.people.picture }}' alt="Generic placeholder image" width="130" height="168">
+				<h4>{{ user.first_name }} {{ user.last_name }}</h4>
+				<h4>{{ user.people.last_name_chinese }}{{ user.people.first_name_chinese }}</h4>
+				{{ user.email }} <br>
+				<!--<p><a class="btn btn-default" href="{{ user.people.link }}" role="button">View details &raquo;</a></p>-->
+			</div><!-- /.col-lg-4 -->
+			{% endfor %}
+		</div><!-- /.row -->
+		{% endfor %}
+	{% endblock %}
+
+	{% block nav %}
+	<nav> 
+  		<ul  class= "pagination" > 
+    		{% for degree in degrees %}
+    			{% if degree == status %}
+    				<li class="active"><a  href= "/people/graduate/{{ degree }}" > {{ degree }} </a>	</li>
+    			{% else %}
+    				<li><a  href= "/people/graduate/{{ degree }}" > {{ degree }} </a></li>
+    			{% endif %}
+    		{% endfor %}
+  		</ul> 
+	</nav>
+	{% endblock %}
